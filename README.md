@@ -19,7 +19,7 @@ PHP 7.3 and later.
 You can install the bindings via [Composer](http://getcomposer.org/). Run the following command:
 
 ```bash
-composer require newsdata/newsdataapi
+composer require newsdataio/newsdataapi
 ```
 
 <br />
