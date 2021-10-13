@@ -51,13 +51,17 @@ See the [API docs](https://newsdata.io/docs/).
 
 <br />
 
+
+
 ## Getting Started
 
 ### LATEST NEWS API
 
-`GET /1/news`
 
-```
+>  **GET**  &nbsp;&nbsp;&nbsp; /1/news
+
+
+```php
 require_once '../autoload.php';
 
 use NewsdataIO\NewsdataApi;
@@ -67,32 +71,34 @@ $newsdataApiObj = new NewsdataApi(NEWSDATA_API_KEY);
 # Pass your desired strings in an array with unique key
 $data = array("q" => "ronaldo","country" => "ie");
 
-$response = $newsdataApiObj->news_api($data);
+$response = $newsdataApiObj->get_latest_news($data);
 
 ```
-`API key` : Your private Newsdata API key. 
+**`API key`**  : Your private Newsdata API key. 
 
-`country` : You can pass a comma seperated string of 2-letter ISO 3166-1 countries (maximum 5) to restrict the search to. Possible Options: `us` `gb` `in` `jp` `ae` `sa` `au` `ca` `sg` 
+**`country`** : Find sources that display news in a specific country. Possible Options: `ar` , `au` , `at` , `be` , `br` , `bg` , `ca` , `cn` , `co` , `cu`, `cz`,`eg`, `fr`,`de`, `gr`, `hk`, `hu`, `in`, `id`, `ie`, `il`, `it`, `jp`, `lv`, `lb`, `lt`, `my`, `mx`, `ma`, `nl`, `nz`, `ng`, `kp`, `no`, `pk`, `ph`, `pl`, `pt`, `ro`, `ru`, `sa`, `rs`, `sg`, `sk`, `si`, `za`, `kr`, `es`, `se`, `ch`, `tw`, `th`, `tr`, `ua`, `ae`, `gb`, `us`, `ve`
 
-`category` : A comma seperated string of categories (maximum 5) to restrict the search to. Possible Options: `top`, `business`, `science`, `technology`, `sports`, `health`, `entertainment`
+**`category`** : Find sources that display news of this category. Possible Options: `business` ,`entertainment` ,`environment`, `food`, `health`, `politics`, `science`, `sports`, `technology`, `top`, `world`
 
-`language` : A comma seperated string of languages (maximum 5) to restrict the search to. Possible Options: `en`, `ar`, `jp`, `in`, `es`, `fr`
+**`language`** : Find sources that display news in a specific language. Possible Options: `ar`, `bs`, `bg`, `zh`, `hr`, `cs`, `nl`, `en`, `fr`, `de`, `el`, `he`, `hi`, `hu`, `in`, `it`, `jp`, `ko`, `lv`, `lt`, `ms`,`no`, `pl`, `pt`, `ro`, `ru`, `sr`, `sk`, `sl`, `es`, `sv`, `th`, `tr`, `uk`
 
-`domain` : A comma seperated string of domains (maximum 5) to restrict the search to. Use the /domains endpoint to find top sources id.
+**`domain`** : A comma seperated string of domains (maximum 5) to restrict the search to. Use the /domains endpoint to find top sources id.
  
-`q` : Keywords or phrases to search for in the news title and content. The value must be URL-encoded. Advance search options: Search Social q=social, Search "Social Pizza" q=social pizza, Search Social but not with pizza. social -pizza q=social -pizza, Search Social but not with pizza and wildfire. social -pizza -wildfire q=social -pizza -wildfire, Search multiple keyword with AND operator. social AND pizza q=social AND pizza 
+**`q`** : Keywords or phrases to search for in the news title and content. The value must be URL-encoded. Advance search options: Search ***Social*** `q=social`, Search ***Social Pizza*** `q=social pizza`, Search Social but not with pizza. ***social -pizza*** `q=social -pizza`, Search Social but not with pizza and wildfire. ***social -pizza -wildfire*** `q=social -pizza -wildfire`, Search multiple keyword with AND operator. ***social AND pizza*** `q=social AND pizza`  
 
-`qInTitle` : Keywords or phrases to search for in the news title only.
+**`qInTitle`** : Keywords or phrases to search for in the news title only.
 
-`page` : Use this to page through the results if the total results found is greater than the page size.
+**`page`** : Use this to page through the results if the total results found is greater than the page size.
 
 <br />
 
+
+
 ### ARCHIVE NEWS API
 
-`GET /1/archive`
+>  **GET**  &nbsp;&nbsp;&nbsp; /1/archive
 
-```
+```php
 require_once '../autoload.php';
 
 use NewsdataIO\NewsdataApi;
@@ -102,37 +108,37 @@ $newsdataApiObj = new NewsdataApi(NEWSDATA_API_KEY);
 # Pass your desired strings in an array with unique key
 $data = array("q" => "ronaldo","country" => "ie");
 
-$response = $newsdataApiObj->archive_api($data);
+$response = $newsdataApiObj->news_archive($data);
 
 ```
-`API key` : Your private Newsdata API key. 
+**`API key`** : Your private Newsdata API key. 
 
-`country` : You can pass a comma seperated string of 2-letter ISO 3166-1 countries (maximum 5) to restrict the search to. Possible Options: `us` `gb` `in` `jp` `ae` `sa` `au` `ca` `sg` 
+**`country`** : Find sources that display news in a specific country. Possible Options: `ar` , `au` , `at` , `be` , `br` , `bg` , `ca` , `cn` , `co` , `cu`, `cz`,`eg`, `fr`,`de`, `gr`, `hk`, `hu`, `in`, `id`, `ie`, `il`, `it`, `jp`, `lv`, `lb`, `lt`, `my`, `mx`, `ma`, `nl`, `nz`, `ng`, `kp`, `no`, `pk`, `ph`, `pl`, `pt`, `ro`, `ru`, `sa`, `rs`, `sg`, `sk`, `si`, `za`, `kr`, `es`, `se`, `ch`, `tw`, `th`, `tr`, `ua`, `ae`, `gb`, `us`, `ve`
 
-`category` : A comma seperated string of categories (maximum 5) to restrict the search to. Possible Options: `top`, `business`, `science`, `technology`, `sports`, `health`, `entertainment`
+**`category`** : Find sources that display news of this category. Possible Options: `business` ,`entertainment` ,`environment`, `food`, `health`, `politics`, `science`, `sports`, `technology`, `top`, `world`
 
-`language` : A comma seperated string of languages (maximum 5) to restrict the search to. Possible Options: `en`, `ar`, `jp`, `in`, `es`, `fr`
+**`language`** : Find sources that display news in a specific language. Possible Options: `ar`, `bs`, `bg`, `zh`, `hr`, `cs`, `nl`, `en`, `fr`, `de`, `el`, `he`, `hi`, `hu`, `in`, `it`, `jp`, `ko`, `lv`, `lt`, `ms`,`no`, `pl`, `pt`, `ro`, `ru`, `sr`, `sk`, `sl`, `es`, `sv`, `th`, `tr`, `uk`
 
-`domain` : A comma seperated string of domains (maximum 5) to restrict the search to. Use the /domains endpoint to find top sources id.
+**`domain`** : A comma seperated string of domains (maximum 5) to restrict the search to. Use the /domains endpoint to find top sources id.
 
-`from_date` : A date and optional time for the oldest article allowed. This should be in ISO 8601 format (e.g. `2021-04-18` or `2021-04-18T04:04:34`)
+**`from_date`** : A date and optional time for the oldest article allowed. This should be in ISO 8601 format (e.g. `2021-04-18` or `2021-04-18T04:04:34`)
 
-`to_date` : A date and optional time for the newest article allowed. This should be in ISO 8601 format (e.g. `2021-04-18` or `2021-04-18T04:04:34`)
+**`to_date`** : A date and optional time for the newest article allowed. This should be in ISO 8601 format (e.g. `2021-04-18` or `2021-04-18T04:04:34`)
  
-`q` : Keywords or phrases to search for in the news title and content. The value must be URL-encoded. Advance search options: Search Social q=social, Search "Social Pizza" q=social pizza, Search Social but not with pizza. social -pizza q=social -pizza, Search Social but not with pizza and wildfire. social -pizza -wildfire q=social -pizza -wildfire, Search multiple keyword with AND operator. social AND pizza q=social AND pizza 
+**`q`** : Keywords or phrases to search for in the news title and content. The value must be URL-encoded. Advance search options: Search ***Social*** `q=social`, Search ***Social Pizza*** `q=social pizza`, Search Social but not with pizza. ***social -pizza*** `q=social -pizza`, Search Social but not with pizza and wildfire. ***social -pizza -wildfire*** `q=social -pizza -wildfire`, Search multiple keyword with AND operator. ***social AND pizza*** `q=social AND pizza` 
 
-`qInTitle` : Keywords or phrases to search for in the news title only.
+**`qInTitle`** : Keywords or phrases to search for in the news title only.
 
-`page` : Use this to page through the results if the total results found is greater than the page size.
+**`page`** : Use this to page through the results if the total results found is greater than the page size.
 
 
 <br />
 
 ### NEWS SOURCES API
 
-`GET /1/sources`
+>  **GET**  &nbsp;&nbsp;&nbsp; /1/sources
 
-```
+```php
 require_once '../autoload.php';
 
 use NewsdataIO\NewsdataApi;
@@ -142,16 +148,16 @@ $newsdataApiObj = new NewsdataApi(NEWSDATA_API_KEY);
 # Pass your desired strings in an array with unique key
 $data = array("q" => "ronaldo","country" => "ie");
 
-$response = $newsdataApiObj->sources_api($data);
+$response = $newsdataApiObj->news_sources($data);
 
 ```
-`API key` : Your private Newsdata API key. 
+**`API key`** : Your private Newsdata API key. 
 
-`country` : Find sources that display news in a specific country. Possible Options: `us` `gb` `in` `jp` `ae` `sa` `au` `ca` `sg` 
+**`country`** : Find sources that display news in a specific country. Possible Options: `ar` , `au` , `at` , `be` , `br` , `bg` , `ca` , `cn` , `co` , `cu`, `cz`,`eg`, `fr`,`de`, `gr`, `hk`, `hu`, `in`, `id`, `ie`, `il`, `it`, `jp`, `lv`, `lb`, `lt`, `my`, `mx`, `ma`, `nl`, `nz`, `ng`, `kp`, `no`, `pk`, `ph`, `pl`, `pt`, `ro`, `ru`, `sa`, `rs`, `sg`, `sk`, `si`, `za`, `kr`, `es`, `se`, `ch`, `tw`, `th`, `tr`, `ua`, `ae`, `gb`, `us`, `ve`
 
-`category` : Find sources that display news of this category. Possible Options: `top`, `business`, `science`, `technology`, `sports`, `health`, `entertainment`
+**`category`** : Find sources that display news of this category. Possible Options: `business` ,`entertainment` ,`environment`, `food`, `health`, `politics`, `science`, `sports`, `technology`, `top`, `world`
 
-`language` : Find sources that display news in a specific language. Possible Options: `en`, `ar`, `jp`, `in`, `es`, `fr`
+**`language`** : Find sources that display news in a specific language. Possible Options: `ar`, `bs`, `bg`, `zh`, `hr`, `cs`, `nl`, `en`, `fr`, `de`, `el`, `he`, `hi`, `hu`, `in`, `it`, `jp`, `ko`, `lv`, `lt`, `ms`,`no`, `pl`, `pt`, `ro`, `ru`, `sr`, `sk`, `sl`, `es`, `sv`, `th`, `tr`, `uk`
 
 <br />
 
