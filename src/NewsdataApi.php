@@ -4,18 +4,18 @@ declare(strict_types=1);
 namespace NewsdataIO;
 
 class NewsdataApi extends NewsdataApiBase {
-    
+
     private $_api_key       =   '';
-    
+
     /**
-     * 
+     *
      * @param string $api_key
      */
     function __construct(string $api_key){
         parent::__construct();
         $this->_api_key     =   $api_key;
     }
-    
+
     /**
      * Set the connection and response timeouts.
      *
@@ -27,7 +27,7 @@ class NewsdataApi extends NewsdataApiBase {
         $this->connectionTimeout = $connectionTimeout;
         $this->timeout = $timeout;
     }
-    
+
     /**
      * Set the number of times to retry on error and how long between each.
      *
@@ -39,7 +39,7 @@ class NewsdataApi extends NewsdataApiBase {
         $this->maxRetries = $maxRetries;
         $this->retriesDelay = $retriesDelay;
     }
-    
+
     /**
      * @param bool $value
      */
@@ -47,7 +47,7 @@ class NewsdataApi extends NewsdataApiBase {
     {
         $this->decodeJsonAsArray = $value;
     }
-    
+
     /**
      * @param array $proxy
      */
@@ -55,28 +55,32 @@ class NewsdataApi extends NewsdataApiBase {
     {
         $this->proxy = $proxy;
     }
-    
+
     public function get(string $url, array $parameters = [])
     {
         return $this->http('GET', $url, $parameters,$this->_api_key, true);
     }
-    
+
     public function post(string $url, array $parameters = [], bool $json = false ) {
         return $this->http('POST', $url, $parameters,$this->_api_key, $json);
     }
-    
+
     function get_latest_news($data)
     {
-        return $this->get($this->NewsApiURL(),$data);
+        return $this->get($this->EndpointInURL('news'),$data);
     }
-    
+    function get_crypto_news($data)
+    {
+        return $this->get($this->EndpointInURL('crypto'),$data);
+    }
+
     function news_archive($data){
-        return $this->get($this->ArchiveApiURL(),$data);
+        return $this->get($this->EndpointInURL('archive'),$data);
     }
-    
+
     function news_sources($data){
-        return $this->get($this->SourcesApiURL(),$data);
+        return $this->get($this->EndpointInURL('sources'),$data);
     }
-    
-    
+
+
 }

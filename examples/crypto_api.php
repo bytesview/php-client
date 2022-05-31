@@ -7,10 +7,9 @@ use NewsdataIO\NewsdataApi;
 $newsdataApiObj = new NewsdataApi(NEWSDATA_API_KEY);
 
 $data = array(
-                "q" => "ronaldo",
-                "country" => "ie"
+                "q" => "bitcoin"
             );
 
-$response = $newsdataApiObj->get_latest_news($data);
+$response = $newsdataApiObj->get_crypto_news($data);
 
 var_dump($response);
